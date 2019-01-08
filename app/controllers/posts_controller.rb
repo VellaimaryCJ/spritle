@@ -3,9 +3,34 @@ class PostsController < ApplicationController
   #Test comment
   # GET /posts
   # GET /posts.json
+  # def index
+  #   @posts = Post.all
+  # end
+
   def index
-    @posts = Post.all
+	# @posts = Post.where(title: 'MARY')
+	# @posts = Post.titleScope	
+	#@posts = Post.contentScope.titleScope('MARY')
+
+	@posts = Post.unscoped.all
+  #render json: @posts
+
+  posts_json = []
+  @posts.each do |postV|
+    post_json = {
+      "id" => postV.id,
+      "title" => postV.title,
+      "content" => postV.content,      
+      "user_id" => postV.user_id
+    } 
+    posts_json << post_json
   end
+  File.open("public/posts.json","w") do |f|
+    f.write(posts_json.to_json)
+  end 
+
+  end
+
 
   # GET /posts/1
   # GET /posts/1.json

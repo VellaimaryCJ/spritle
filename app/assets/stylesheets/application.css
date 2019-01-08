@@ -1,0 +1,21 @@
+#parent {
+   display: table;
+   width: 100%;
+   /*padding: 10px;*/
+
+}
+#form_login {
+   display: table-cell;
+   text-align: center;
+   vertical-align: middle;
+   border: 1px solid skyblue;
+   padding: 10%;
+   line-height: 100%;
+
+}
+label{
+	color: Orange;
+	text-align: left;
+	line-height: 10px;
+}
+
